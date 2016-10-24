@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<package>
+  <name>cartographer_hector_tracker</name>
+  <version>0.0.0</version>
+  <description>The cartographer_hector_tracker package</description>
+
+  <maintainer email="kohlbrecher@sim.tu-darmstadt.de">Stefan Kohlbrecher</maintainer>
+  
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>cartographer_ros</build_depend>
+  <run_depend>cartographer_ros</run_depend>
+
+  <export>
+  </export>
+  
+</package>
