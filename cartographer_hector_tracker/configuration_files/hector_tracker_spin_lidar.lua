@@ -16,13 +16,6 @@ include "map_builder.lua"
 
 options = {
   map_builder = MAP_BUILDER,
-  sensor_bridge = {
-    horizontal_laser_min_range = 0.6,
-    horizontal_laser_max_range = 30.,
-    horizontal_laser_missing_echo_ray_length = 1.,
-    constant_odometry_translational_variance = 1e-7,
-    constant_odometry_rotational_variance = 1e-7,
-  },
   map_frame = "map",
   tracking_frame = "base_link",
   published_frame = "odom",
@@ -38,6 +31,9 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 180
+TRAJECTORY_BUILDER_3D.laser_min_range = 0.6
+TRAJECTORY_BUILDER_3D.laser_max_range = 30.
+TRAJECTORY_BUILDER_3D.submaps.num_laser_fans = 40.
 
 MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 7
