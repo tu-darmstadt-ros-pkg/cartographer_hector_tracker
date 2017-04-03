@@ -44,7 +44,7 @@ MAP_BUILDER.sparse_pose_graph.optimization_problem.ceres_solver_options.max_num_
 -- Reuse the coarser 3D voxel filter to speed up the computation of loop closure
 -- constraints.
 MAP_BUILDER.sparse_pose_graph.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
-MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.3
+MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.5
 MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
 
 return options
