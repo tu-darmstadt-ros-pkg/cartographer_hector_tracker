@@ -30,7 +30,7 @@ options = {
   pose_publish_period_sec = 5e-3,
 }
 
-TRAJECTORY_BUILDER_3D.scans_per_accumulation = 5
+TRAJECTORY_BUILDER_3D.scans_per_accumulation = 1
 TRAJECTORY_BUILDER_3D.laser_min_range = 0.6
 TRAJECTORY_BUILDER_3D.laser_max_range = 10.
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 10
