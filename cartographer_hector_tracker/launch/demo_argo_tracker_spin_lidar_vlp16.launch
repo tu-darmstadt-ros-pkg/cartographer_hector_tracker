@@ -1,0 +1,41 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch>
+  <param name="/use_sim_time" value="true" />
+
+  <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_spin_lidar.launch" />
+
+  <node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename) -r 3.0 --clock -k" />
+  
+  <arg name="calibration" default="$(find velodyne_pointcloud)/params/VLP16db.yaml"/>
+  <arg name="transform_frame_id" default="odom" />
+  <arg name="manager" default="velodyne_nodelet_manager" />
+  <arg name="max_range" default="130.0" />
+  <arg name="min_range" default="0.45" />
+
+  <node pkg="nodelet" type="nodelet" name="$(arg manager)_transform" 
+        args="load velodyne_pointcloud/TransformNodelet $(arg manager)" output="screen" >
+    <param name="calibration" value="$(arg calibration)"/>
+    <param name="frame_id" value="$(arg transform_frame_id)"/>
+    <param name="max_range" value="$(arg max_range)"/>
+    <param name="min_range" value="$(arg min_range)"/>
+    <remap from="velodyne_points" to="/spin_laser/vlp16" />
+
+  </node>
+
+</launch>
