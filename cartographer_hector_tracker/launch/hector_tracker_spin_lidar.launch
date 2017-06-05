@@ -29,7 +29,7 @@
     <param name="use_high_fidelity_projection" value="false" />
     <param name="target_frame" value="base_link" />
     <remap from="scan" to="/spin_laser/scan" />
-    <remap from="scan_cloud" to="/spinning_laser_3d" />
+    <remap from="scan_cloud" to="/scan_cloud_filtered" />
   </node>  
 
   <node name="cartographer" pkg="cartographer_ros"
@@ -37,7 +37,7 @@
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
           -configuration_basename hector_tracker_spin_lidar.lua"
       output="screen" >
-    <remap from="points2" to="spinning_laser_3d" />
+    <remap from="points2" to="scan_cloud_filtered" />
     <remap from="imu" to="/imu/data" />
   </node>
 

@@ -19,11 +19,11 @@
 
   <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_spin_lidar.launch" />
 
-  <node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
+  <!--<node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />-->
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename) -r 2.5 --clock" />
+      args="$(arg bag_filename) -r 0.3 --clock" />
   
 
 </launch>

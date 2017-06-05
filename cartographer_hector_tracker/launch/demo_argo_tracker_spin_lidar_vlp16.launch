@@ -17,25 +17,15 @@
 <launch>
   <param name="/use_sim_time" value="true" />
 
-  <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_spin_lidar.launch" />
+  <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_spin_lidar_vlp16.launch" />
 
+  <!--<node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />-->
+ 
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename) -r 3.0 --clock -k" />
+      args="$(arg bag_filename) -r 0.3 --clock" />
   
-  <arg name="calibration" default="$(find velodyne_pointcloud)/params/VLP16db.yaml"/>
-  <arg name="transform_frame_id" default="odom" />
-  <arg name="manager" default="velodyne_nodelet_manager" />
-  <arg name="max_range" default="130.0" />
-  <arg name="min_range" default="0.45" />
-
-  <node pkg="nodelet" type="nodelet" name="$(arg manager)_transform" 
-        args="load velodyne_pointcloud/TransformNodelet $(arg manager)" output="screen" >
-    <param name="calibration" value="$(arg calibration)"/>
-    <param name="frame_id" value="$(arg transform_frame_id)"/>
-    <param name="max_range" value="$(arg max_range)"/>
-    <param name="min_range" value="$(arg min_range)"/>
-    <remap from="velodyne_points" to="/spin_laser/vlp16" />
-
-  </node>
 
 </launch>
+
+

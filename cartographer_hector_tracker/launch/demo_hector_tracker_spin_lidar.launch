@@ -23,7 +23,7 @@
       args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename) --clock" />
+      args="$(arg bag_filename) --clock -k " />
   
 
 </launch>
