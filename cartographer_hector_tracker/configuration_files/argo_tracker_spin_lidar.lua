@@ -33,15 +33,18 @@ options = {
   pose_publish_period_sec = 5e-3,
 }
 
-TRAJECTORY_BUILDER_3D.scans_per_accumulation = 180
+TRAJECTORY_BUILDER_3D.scans_per_accumulation = 50
 TRAJECTORY_BUILDER_3D.min_range = 0.9
-TRAJECTORY_BUILDER_3D.max_range = 60
+TRAJECTORY_BUILDER_3D.max_range = 6
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 50
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.10
-TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.40
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 20
+
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
+TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.1
+TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
+TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 2000
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
 
@@ -55,7 +58,7 @@ TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.real_time_correlative_scan
 MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 3
 MAP_BUILDER.sparse_pose_graph.optimization_problem.huber_scale = 5e2
-MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = 20
+MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = 2000
 MAP_BUILDER.sparse_pose_graph.constraint_builder.sampling_ratio = 0.03
 MAP_BUILDER.sparse_pose_graph.optimization_problem.ceres_solver_options.max_num_iterations = 10
 MAP_BUILDER.sparse_pose_graph.optimization_problem.rotation_weight = 3e3
@@ -67,8 +70,11 @@ MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.65
 MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
 MAP_BUILDER.use_tsdf = true
 
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 50
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 10
 
-TRAJECTORY_BUILDER_3D.use = "KALMAN"
+
+TRAJECTORY_BUILDER_3D.use = "OPTIMIZING"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 50.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 15.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 4e0
