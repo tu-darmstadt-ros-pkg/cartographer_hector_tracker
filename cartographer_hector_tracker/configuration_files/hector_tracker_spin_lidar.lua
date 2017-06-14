@@ -34,19 +34,26 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 180
-TRAJECTORY_BUILDER_3D.min_range = 0.9
-TRAJECTORY_BUILDER_3D.max_range = 60
+TRAJECTORY_BUILDER_3D.min_range = 0.6
+TRAJECTORY_BUILDER_3D.max_range = 8
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 50
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 0.0001
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 0.01
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_0 = 5000.0
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 30000.0
 
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.10
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.40
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 40
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
 
-TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0
-TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter.min_num_points = 800.
+TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
+TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 2000
+
+-- TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0
+-- TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter.min_num_points = 800.
 -- TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.odometer_rotational_variance = 1e-9
 TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.use_online_correlative_scan_matching = false
 TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.real_time_correlative_scan_matcher.linear_search_window = 0.
