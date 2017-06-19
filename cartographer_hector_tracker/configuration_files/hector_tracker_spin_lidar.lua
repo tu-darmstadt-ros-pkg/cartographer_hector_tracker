@@ -44,7 +44,8 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.occupied_space_weight_1 = 30000.0
 
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.40
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 40
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 4000000
+TRAJECTORY_BUILDER_3D.tsdfs.num_range_data = 4000000
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
 

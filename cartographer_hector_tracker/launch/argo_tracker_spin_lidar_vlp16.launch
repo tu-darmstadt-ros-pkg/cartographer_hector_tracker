@@ -20,7 +20,7 @@
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename argo_tracker_spin_lidar.lua"
+          -configuration_basename argo_tracker_spin_lidar_vlp16.lua"
       output="screen"   >
     <remap from="points2" to="/spin_laser/vlp16"/> 
     <remap from="imu" to="/imu/data"/>

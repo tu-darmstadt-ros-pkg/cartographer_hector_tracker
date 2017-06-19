@@ -19,7 +19,7 @@ include "trajectory_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
-  map_frame = "map",
+  map_frame = "world",
   tracking_frame = "base_link",
   published_frame = "odom",
   odom_frame = "odom",
@@ -34,14 +34,14 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 50
-TRAJECTORY_BUILDER_3D.min_range = 1.2
-TRAJECTORY_BUILDER_3D.max_range = 10
+TRAJECTORY_BUILDER_3D.min_range = 0.9
+TRAJECTORY_BUILDER_3D.max_range = 50
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 50
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 
 
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
-TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.1
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.075
+TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.075
 TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200000000
