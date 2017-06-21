@@ -42,7 +42,7 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.10
 TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.10
-TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
+TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = true
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200000000
 TRAJECTORY_BUILDER_3D.tsdfs.num_range_data = 200000000
