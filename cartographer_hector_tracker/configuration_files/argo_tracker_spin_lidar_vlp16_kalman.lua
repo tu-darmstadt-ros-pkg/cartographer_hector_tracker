@@ -34,7 +34,7 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 50
-TRAJECTORY_BUILDER_3D.min_range = 0.9
+TRAJECTORY_BUILDER_3D.min_range = 1.5
 TRAJECTORY_BUILDER_3D.max_range = 50
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 50
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
