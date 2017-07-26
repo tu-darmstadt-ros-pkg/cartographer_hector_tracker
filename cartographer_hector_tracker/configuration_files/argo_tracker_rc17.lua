@@ -38,6 +38,7 @@ TRAJECTORY_BUILDER_3D.min_range = 0.3
 TRAJECTORY_BUILDER_3D.max_range = 25
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 100
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
+TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
 TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
@@ -70,8 +71,8 @@ MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.65
 MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
 MAP_BUILDER.use_tsdf = false
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 6
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 3
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 3
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 1
 TRAJECTORY_BUILDER_3D.use = "ROBUST"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 5.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 15.
