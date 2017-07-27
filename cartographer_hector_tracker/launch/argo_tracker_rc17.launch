@@ -20,7 +20,7 @@
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
           -configuration_basename argo_tracker_rc17.lua"
-      output="screen"   >
+      output="screen" respawn="true">
     <remap from="points2" to="/scan_cloud_filtered"/> 
     <remap from="imu" to="/imu/data"/>
   </node>
