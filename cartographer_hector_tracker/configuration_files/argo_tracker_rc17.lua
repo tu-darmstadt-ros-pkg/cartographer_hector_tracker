@@ -81,6 +81,9 @@ TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.use_imu_time_calibration = false
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.imu_time_weight = 2e3
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.imu_initial_delay = 0.0
 
 
 return options
