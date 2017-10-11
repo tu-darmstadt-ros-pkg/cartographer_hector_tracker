@@ -17,21 +17,18 @@
 <launch>
 
 
-<node pkg="vigir_laserscan_to_pointcloud" type="laserscan_to_pointcloud_node" name="lidar_to_cloud_converter" respawn="true" output="screen">
-    <param name="min_range" value="1.0" />
-    <param name="use_high_fidelity_projection" value="false" />
-    <param name="target_frame" value="spin_lidar_lidar_mount_link" />
-    <remap from="scan" to="/spin_laser/scan" />
-    <remap from="scan_cloud" to="/scan_cloud_filtered_mount_frame" />
-  </node>  
-
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+    <param name="target_frame_name" type="string" value="/world" />
+    <param name="source_frame_name" type="string" value="/base_link" />
+    <param name="trajectory_update_rate" type="double" value="4" />
+    <param name="trajectory_publish_rate" type="double" value="0.25" />
+  </node>
 
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename argo_tracker_spin_lidar_vlp16.lua"
-      output="screen"   >
-    <remap from="points2" to="/scan_cloud_filtered_mount_frame"/> 
+          -configuration_basename argo_tracker_spin_lidar_vlp16.lua" output="screen" respawn="true">
+    <remap from="points2" to="/spin_laser/vlp16"/> 
     <remap from="imu" to="/imu/data"/>
   </node>
 
