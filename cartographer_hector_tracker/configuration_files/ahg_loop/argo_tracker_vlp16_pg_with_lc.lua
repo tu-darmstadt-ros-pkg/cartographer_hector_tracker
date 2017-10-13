@@ -79,7 +79,7 @@ MAP_BUILDER.map_type = "PROBABILITY_GRID"
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 6
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 3
-TRAJECTORY_BUILDER_3D.use = "KALMAN"
+TRAJECTORY_BUILDER_3D.use = "ROBUST"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 15.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 4.5
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
