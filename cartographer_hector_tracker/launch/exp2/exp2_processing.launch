@@ -1,0 +1,37 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch>
+  <arg name="bag_filename" value="/home/hector/bag_files/EXP2_29_Jul/default_record_2017-07-29-11-18-56_1.bag" />
+  <param name="/use_sim_time" value="true" />
+  <!--<include file="$(find cartographer_hector_tracker)/launch/exp2/exp2_argo_tracker_vlp16_pg.launch" />-->
+
+  <include file="$(find argo_postproc_launch)/launch/generate_cartographer_data_vlp16.launch" />
+
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+    <param name="target_frame_name" type="string" value="/world" />
+    <param name="source_frame_name" type="string" value="/base_link" />
+    <param name="trajectory_update_rate" type="double" value="4" />
+    <param name="trajectory_publish_rate" type="double" value="0.25" />
+  </node>
+ 
+  <node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename) -r 0.7 -s 287 -u 145 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="true"/>
+  
+
+</launch>
+
+

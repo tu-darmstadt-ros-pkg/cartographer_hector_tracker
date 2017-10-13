@@ -16,13 +16,11 @@
 
 <launch>
 
-
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
-          -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename argo_tracker_spin_lidar_vlp16.lua"
-      output="screen"   >
-    <remap from="scan" to="/spin_laser/scan" />
+          -configuration_directory $(find cartographer_hector_tracker)/configuration_files/ahg_loop
+          -configuration_basename argo_tracker_vlp16_pg_with_lc.lua" output="screen" respawn="true">
+    <remap from="points2" to="/spin_laser/vlp16"/> 
     <remap from="imu" to="/imu/data"/>
   </node>
 

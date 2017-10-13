@@ -1,0 +1,41 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch>
+  <arg name="bag_filename0" value="/home/hector/bag_files/tracker_simulation_small_loop/taurob_tracker_simulation.bag" />
+
+<node pkg="vigir_laserscan_to_pointcloud" type="laserscan_to_pointcloud_node" name="lidar_to_cloud_converter" respawn="true" output="screen">
+    <param name="min_range" value="1.0" />
+    <param name="use_high_fidelity_projection" value="false" />
+    <param name="target_frame" value="spin_lidar_lidar_mount_link_fixed" />
+    <remap from="scan" to="/spin_laser/scan" />
+    <remap from="scan_cloud" to="/scan_cloud_filtered_mount_frame" />
+  </node>    
+
+
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+    <param name="target_frame_name" type="string" value="/world" />
+    <param name="source_frame_name" type="string" value="/base_link" />
+    <param name="trajectory_update_rate" type="double" value="4" />
+    <param name="trajectory_publish_rate" type="double" value="0.25" />
+  </node>
+ 
+  <node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename0)  -r 1.0 -s 0 --clock -k" respawn="false"/>
+
+</launch>
+
+
