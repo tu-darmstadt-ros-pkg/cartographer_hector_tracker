@@ -32,7 +32,7 @@
   </node>
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename0) $(arg bag_filename1) $(arg bag_filename2) $(arg bag_filename3) -r 1.5 -s 335 -u 1650 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="false"/>
+      args="$(arg bag_filename0) $(arg bag_filename1) $(arg bag_filename2) $(arg bag_filename3) -r 0.7 -s 335 -u 1650 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="false"/>
 
 </launch>
 

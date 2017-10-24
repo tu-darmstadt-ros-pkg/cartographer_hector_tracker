@@ -34,14 +34,14 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 12
-TRAJECTORY_BUILDER_3D.min_range = 1.3
-TRAJECTORY_BUILDER_3D.max_range = 12
+TRAJECTORY_BUILDER_3D.min_range = 2
+TRAJECTORY_BUILDER_3D.max_range = 100
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 1000
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
-TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
+TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.1
 TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200000000
@@ -52,6 +52,8 @@ TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
 
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0
+TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0
+TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = 0
 TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter.min_num_points = 800.
 -- TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.odometer_rotational_variance = 1e-9
 TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.use_online_correlative_scan_matching = false
@@ -75,14 +77,14 @@ MAP_BUILDER.map_type = "VOXBLOX_TSDF"
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 6
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 3
-TRAJECTORY_BUILDER_3D.use = "KALMAN"
+TRAJECTORY_BUILDER_3D.use = "ROBUST"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 140.
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 4.5
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 40.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 4e2
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 4e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.use_imu_time_calibration = false
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.imu_time_weight = 2e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.imu_initial_delay = 0.0

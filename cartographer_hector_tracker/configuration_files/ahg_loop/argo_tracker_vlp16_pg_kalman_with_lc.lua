@@ -24,7 +24,7 @@ options = {
   published_frame = "odom",
   odom_frame = "odom",
   provide_odom_frame = false,
-  use_odometry = false,
+  use_odometry = true,
   use_laser_scan = false,
   use_multi_echo_laser_scan = false,
   num_point_clouds = 1,
@@ -33,18 +33,18 @@ options = {
   pose_publish_period_sec = 5e-3,
 }
 
-TRAJECTORY_BUILDER_3D.scans_per_accumulation = 12
+TRAJECTORY_BUILDER_3D.scans_per_accumulation = 20
 TRAJECTORY_BUILDER_3D.min_range = 1.3
-TRAJECTORY_BUILDER_3D.max_range = 12
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 1000
+TRAJECTORY_BUILDER_3D.max_range = 50
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 200
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
-TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
+TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.1
 TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200000000
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 75
 TRAJECTORY_BUILDER_3D.tsdfs.num_range_data = TRAJECTORY_BUILDER_3D.submaps.num_range_data
 TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.truncation_distance = 0.3
 TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.truncation_scale = 1.0
@@ -61,7 +61,7 @@ TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.real_time_correlative_scan
 MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 3
 MAP_BUILDER.sparse_pose_graph.optimization_problem.huber_scale = 5e2
-MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = TRAJECTORY_BUILDER_3D.submaps.num_range_data
+MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = -1
 MAP_BUILDER.sparse_pose_graph.constraint_builder.sampling_ratio = 0.9
 MAP_BUILDER.sparse_pose_graph.optimization_problem.ceres_solver_options.max_num_iterations = 50
 MAP_BUILDER.sparse_pose_graph.optimization_problem.rotation_weight = 3e3
@@ -69,14 +69,18 @@ MAP_BUILDER.sparse_pose_graph.optimization_problem.rotation_weight = 3e3
 -- Reuse the coarser 3D voxel filter to speed up the computation of loop closure
 -- constraints.
 MAP_BUILDER.sparse_pose_graph.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
-MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 990.60
-MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
-MAP_BUILDER.map_type = "VOXBLOX_TSDF"
+MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.70
+MAP_BUILDER.sparse_pose_graph.constraint_builder.fast_correlative_scan_matcher.linear_search_window = 25
+MAP_BUILDER.sparse_pose_graph.constraint_builder.fast_correlative_scan_matcher.angular_search_window = math.rad(45.)
+MAP_BUILDER.sparse_pose_graph.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 25
+MAP_BUILDER.sparse_pose_graph.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 10
+MAP_BUILDER.sparse_pose_graph.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(45.)
+MAP_BUILDER.map_type = "PROBABILITY_GRID"
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 6
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 3
 TRAJECTORY_BUILDER_3D.use = "KALMAN"
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 140.
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 15.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 4.5
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3

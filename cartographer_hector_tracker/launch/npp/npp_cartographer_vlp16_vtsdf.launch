@@ -18,8 +18,8 @@
 
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
-          -configuration_directory $(find cartographer_hector_tracker)/configuration_files/ahg_loop
-          -configuration_basename argo_tracker_vlp16_pg_kalman_with_lc.lua" output="screen" respawn="true">
+          -configuration_directory $(find cartographer_hector_tracker)/configuration_files/npp
+          -configuration_basename argo_tracker_vlp16_vtsdf.lua" output="screen" respawn="true">
     <remap from="points2" to="/spin_laser/vlp16"/> 
     <remap from="imu" to="/imu/data"/>
   </node>

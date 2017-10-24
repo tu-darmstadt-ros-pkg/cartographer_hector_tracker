@@ -36,7 +36,7 @@ options = {
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 12
 TRAJECTORY_BUILDER_3D.min_range = 1.3
 TRAJECTORY_BUILDER_3D.max_range = 12
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 200
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 1000
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 
@@ -75,7 +75,7 @@ MAP_BUILDER.map_type = "PROBABILITY_GRID"
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 6
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 3
-TRAJECTORY_BUILDER_3D.use = "ROBUST"
+TRAJECTORY_BUILDER_3D.use = "KALMAN"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 15.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 4.5
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1

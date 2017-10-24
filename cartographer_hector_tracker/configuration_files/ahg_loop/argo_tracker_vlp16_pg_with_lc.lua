@@ -61,7 +61,7 @@ TRAJECTORY_BUILDER_3D.kalman_local_trajectory_builder.real_time_correlative_scan
 MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 3
 MAP_BUILDER.sparse_pose_graph.optimization_problem.huber_scale = 5e2
-MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = TRAJECTORY_BUILDER_3D.submaps.num_range_data
+MAP_BUILDER.sparse_pose_graph.optimize_every_n_scans = -1
 MAP_BUILDER.sparse_pose_graph.constraint_builder.sampling_ratio = 0.9
 MAP_BUILDER.sparse_pose_graph.optimization_problem.ceres_solver_options.max_num_iterations = 50
 MAP_BUILDER.sparse_pose_graph.optimization_problem.rotation_weight = 3e3

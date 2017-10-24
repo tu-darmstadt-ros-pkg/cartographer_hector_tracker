@@ -29,7 +29,7 @@
   </node>
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename) -r 0.7 -s 287 -u 145 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="true"/>
+      args="$(arg bag_filename) -r 0.7 -s 287 -u 125 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="true"/>
   
 
 </launch>
