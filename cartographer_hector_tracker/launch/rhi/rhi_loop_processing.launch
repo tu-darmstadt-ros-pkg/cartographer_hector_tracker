@@ -1,0 +1,41 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+
+
+
+
+
+<launch>
+  <arg name="bag_filename0" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-10-46_0.bag" />
+  <arg name="bag_filename1" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-18-41_1.bag" />
+  <arg name="bag_filename2" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-26-26_2.bag" />
+  <arg name="bag_filename3" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-33-59_3.bag" />
+  <arg name="bag_filename4" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-41-47_4.bag" />
+  <arg name="bag_filename5" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-49-30_5.bag" />
+  <arg name="bag_filename6" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-11-57-18_6.bag" />
+  <arg name="bag_filename7" value="/home/hector/bag_files/RHI_visit/2017-09-13_RHI_Befahrung/default_record_2017-09-13-12-05-28_7.bag" />
+  <param name="/use_sim_time" value="true" />
+
+ 
+  <node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename0) $(arg bag_filename1) $(arg bag_filename2) $(arg bag_filename3) $(arg bag_filename4) $(arg bag_filename5) $(arg bag_filename6) $(arg bag_filename7) -r 3.5 -s 200 -u 2000 --clock /tf:=/tf_trash /odom:=/odom_trash" respawn="false"/>
+  <include file="$(find argo_postproc_launch)/launch/full_slam_and_nav_setup.launch" />
+</launch>
+
+

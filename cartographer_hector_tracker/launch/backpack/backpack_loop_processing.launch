@@ -15,14 +15,9 @@
 -->
 
 <launch>
-  <arg name="bag_filename0" value="/home/hector/bag_files/ahg_loop/default_record_2017-10-09-13-27-30_0.bag" />
-  <arg name="bag_filename1" value="/home/hector/bag_files/ahg_loop/default_record_2017-10-09-13-41-22_1.bag" />
-  <arg name="bag_filename2" value="/home/hector/bag_files/ahg_loop/default_record_2017-10-09-13-55-56_2.bag" />
-  <arg name="bag_filename3" value="/home/hector/bag_files/ahg_loop/default_record_2017-10-09-14-10-47_3.bag" />
+  <arg name="bag_filename0" value="/home/hector/Downloads/b3-2016-04-05-14-14-00.bag" />
   <param name="/use_sim_time" value="true" />
   <!--<include file="$(find cartographer_hector_tracker)/launch/exp2/exp2_argo_tracker_vlp16_pg.launch" />-->
-
-  <include file="$(find argo_postproc_launch)/launch/generate_cartographer_data_vlp16.launch" />
 
   <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
     <param name="target_frame_name" type="string" value="/world" />
@@ -32,8 +27,7 @@
   </node>
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename0) $(arg bag_filename1) $(arg bag_filename2) $(arg bag_filename3) -r 1.2 -s 335 -u 1650 --clock -k /tf:=/tf_trash /odom:=/odom_trash" respawn="false"/>
-  <!---s 335-->
+      args="$(arg bag_filename0)  -r 0.8 --clock -k" respawn="false"/>
 </launch>
 
 
