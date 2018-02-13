@@ -22,6 +22,7 @@ options = {
   map_frame = "world",
   tracking_frame = "base_link",
   published_frame = "odom",
+  published_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
   odom_frame = "odom",
   provide_odom_frame = false,
   use_odometry = true,
@@ -34,6 +35,7 @@ options = {
 }
 
 TRAJECTORY_BUILDER_3D.scans_per_accumulation = 8
+TRAJECTORY_BUILDER_3D.scans_for_initialization = 16
 TRAJECTORY_BUILDER_3D.min_range = 0.3
 TRAJECTORY_BUILDER_3D.max_range = 40
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 100
@@ -41,11 +43,11 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
-TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
-TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
+--TRAJECTORY_BUILDER_3D.tsdfs.high_resolution = 0.05
+--TRAJECTORY_BUILDER_3D.tsdfs.projection_integrator.carving_enabled = false
 TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200000000
-TRAJECTORY_BUILDER_3D.tsdfs.num_range_data = 200000000
+--TRAJECTORY_BUILDER_3D.tsdfs.num_range_data = 200000000
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
 
@@ -69,7 +71,7 @@ MAP_BUILDER.sparse_pose_graph.optimization_problem.rotation_weight = 3e3
 MAP_BUILDER.sparse_pose_graph.constraint_builder.adaptive_voxel_filter = TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter
 MAP_BUILDER.sparse_pose_graph.constraint_builder.min_score = 0.65
 MAP_BUILDER.sparse_pose_graph.constraint_builder.log_matches = true
-MAP_BUILDER.use_tsdf = false
+--MAP_BUILDER.use_tsdf = false
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_map_update = 1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 1
