@@ -17,13 +17,13 @@
 <launch>
   <param name="/use_sim_time" value="true" />
 
-  <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_spin_lidar_vlp16.launch" />
+  <include file="$(find cartographer_hector_tracker)/launch/argo_tracker_rc17.launch" />
 
-  <!--<node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />-->
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
  
   <node name="playbag" pkg="rosbag" type="play"
-      args="$(arg bag_filename) -r 0.7 -s 150 -u 75 --clock" />
+      args="$(arg bag_filename) -r 1.0 --clock" />
   
 
 </launch>
