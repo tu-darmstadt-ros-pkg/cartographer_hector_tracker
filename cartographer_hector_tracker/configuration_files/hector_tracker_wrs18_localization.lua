@@ -45,17 +45,11 @@ options = {
   landmarks_sampling_ratio = 1.,
 }
 
+TRAJECTORY_BUILDER.pure_localization_trimmer = {
+  max_submaps_to_keep = 6,
+}
 
 
---POSE_GRAPH.optimization_problem.acceleration_weight = 1e-10
---POSE_GRAPH.optimization_problem.rotation_weight = 1e-10 --3e5
---POSE_GRAPH.optimization_problem.local_slam_pose_translation_weight = 1e5
---POSE_GRAPH.optimization_problem.local_slam_pose_rotation_weight = 1e5
---POSE_GRAPH.optimization_problem.odometry_translation_weight = 1e5
---POSE_GRAPH.optimization_problem.odometry_rotation_weight = 1e5
---POSE_GRAPH.optimization_problem.fixed_frame_pose_translation_weight = 1e1
---POSE_GRAPH.optimization_problem.fixed_frame_pose_rotation_weight = 1e2
---POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 1000
 
 POSE_GRAPH.optimization_problem.log_solver_summary = true
 
@@ -76,11 +70,14 @@ TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
 MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 7
 
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 400
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.3
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 40
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.5
 POSE_GRAPH.global_sampling_ratio = 1.0
-POSE_GRAPH.optimize_every_n_nodes = 400
+POSE_GRAPH.optimize_every_n_nodes = 10
 POSE_GRAPH.constraint_builder.min_score = 0.6
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.65
+
+
 POSE_GRAPH.log_residual_histograms = false
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 5.
@@ -101,8 +98,6 @@ POSE_GRAPH.optimization_problem.fix_z_in_3d = false
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0
 POSE_GRAPH.optimization_problem.use_online_imu_extrinsics_in_3d = false
 
-POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 1.5
-
-
+--POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 1.5
 
 return options

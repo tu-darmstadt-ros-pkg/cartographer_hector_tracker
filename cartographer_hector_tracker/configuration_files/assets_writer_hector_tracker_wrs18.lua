@@ -17,7 +17,7 @@ VOXEL_SIZE = 5e-2
 include "transform.lua"
 
 options = {
-  tracking_frame = "base_link",
+  tracking_frame = "imu_link",
   pipeline = {
     {
       action = "min_max_range_filter",
@@ -79,6 +79,10 @@ options = {
       voxel_size = VOXEL_SIZE,
       filename = "xray_xz_all_color",
       transform = XZ_TRANSFORM,
+    },
+    {
+      action = "write_ply",
+      filename = "points.ply",
     },
   }
 }
