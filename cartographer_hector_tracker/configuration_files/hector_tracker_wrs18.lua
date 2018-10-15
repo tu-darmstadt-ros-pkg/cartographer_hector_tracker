@@ -80,7 +80,7 @@ TRAJECTORY_BUILDER_3D.submaps.num_range_data = 400
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.1
 POSE_GRAPH.global_sampling_ratio = 1.0
 POSE_GRAPH.optimize_every_n_nodes = 400
-POSE_GRAPH.constraint_builder.min_score = 0.8
+POSE_GRAPH.constraint_builder.min_score = 0.72
 POSE_GRAPH.log_residual_histograms = false
 
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 15.
