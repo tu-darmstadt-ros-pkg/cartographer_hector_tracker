@@ -19,7 +19,8 @@
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename hector_tracker_wrs18_localization.lua"
+          -configuration_basename hector_tracker_wrs18_localization.lua
+          -load_state_filename $(arg load_state_filename)"
       output="screen" respawn="true">
     <remap from="points2" to="/scan_cloud_filtered"/> 
     <remap from="imu" to="/imu/microstrain/data"/>
