@@ -1,4 +1,4 @@
--- Copyright 2016 The Cartographer Authors
+kate-- Copyright 2016 The Cartographer Authors
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "world",
-  tracking_frame = "imu_link",
+  tracking_frame = "base_link",
   published_frame = "odom",
   matched_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
   odom_frame = "odom",
@@ -36,7 +36,7 @@ options = {
   num_point_clouds = 1,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.1,
-  pose_publish_period_sec = 5e-3,    
+  pose_publish_period_sec = 1e-3,    
   trajectory_publish_period_sec = 30e-3,
   rangefinder_sampling_ratio = 1.,
   odometry_sampling_ratio = 1.,
@@ -74,17 +74,17 @@ TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.1
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
 
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 7
+MAP_BUILDER.num_background_threads = 5
 
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 400
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.3
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.05
 POSE_GRAPH.global_sampling_ratio = 1.0
 POSE_GRAPH.optimize_every_n_nodes = 400
-POSE_GRAPH.constraint_builder.min_score = 0.6
+POSE_GRAPH.constraint_builder.min_score = 0.65
 POSE_GRAPH.log_residual_histograms = false
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 5.
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 15.
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 10.
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 30.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
