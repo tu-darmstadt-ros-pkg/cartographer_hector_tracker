@@ -22,7 +22,7 @@
   <arg name="configuration_basenames" default="hector_tracker_wrs18.lua"/>
   <arg name="urdf_filenames" default="$(find argo_tracker_description)/urdf/argo_tracker_default.urdf"/>
 
-  <remap from="points2" to="/spin_laser/vlp16"/> 
+  <remap from="points2" to="/scan_cloud_filtered"/> 
   <remap from="imu" to="/imu/microstrain/data"/>
   <remap from="odom" to="/odom_raw"/>
   <include file="$(find cartographer_ros)/launch/offline_node.launch">

@@ -19,7 +19,7 @@ include "trajectory_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
-  map_frame = "world",
+  map_frame = "world_map",
   tracking_frame = "imu_link",
   published_frame = "odom",
   matched_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
