@@ -21,7 +21,7 @@
   <node pkg="tf2_ros"
         type="static_transform_publisher"
         name="link1_broadcasadasster"
-        args="9.3 10.5 0.2 0.9 0 0 world world_map" />
+        args="8.95 10.5 0.2 0.9 0 0 world world_map" />
 
 
   <node name="cartographer" pkg="cartographer_ros"
