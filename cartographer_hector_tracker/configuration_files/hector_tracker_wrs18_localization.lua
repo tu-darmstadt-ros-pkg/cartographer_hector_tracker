@@ -27,7 +27,7 @@ options = {
   provide_odom_frame = false,  
   publish_frame_projected_to_2d = false,  
   use_pose_extrapolator = false,
-  use_odometry = false,  
+  use_odometry = true,  
   use_nav_sat = false,
   use_landmarks = false,
   num_laser_scans = 0,  
@@ -68,7 +68,7 @@ POSE_GRAPH.optimization_problem.log_solver_summary = true
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 8
 TRAJECTORY_BUILDER_3D.min_range = 0.7
 TRAJECTORY_BUILDER_3D.max_range = 40
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 200
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 100
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.1
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
@@ -88,9 +88,9 @@ TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_we
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 2 
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e4
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e4
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 8 
 
 POSE_GRAPH.optimization_problem.fix_z_in_3d = false
 
