@@ -86,8 +86,8 @@ TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_we
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e0
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e4
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e4
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e3
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 2 
 
 POSE_GRAPH.optimization_problem.fix_z_in_3d = false
@@ -101,9 +101,9 @@ TRAJECTORY_BUILDER.pure_localization_trimmer = {
 
 
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 20000000
-POSE_GRAPH.global_sampling_ratio = 0.10
+POSE_GRAPH.global_sampling_ratio = 0.05
 POSE_GRAPH.optimize_every_n_nodes = 10
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.6
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.63
 
 
 
