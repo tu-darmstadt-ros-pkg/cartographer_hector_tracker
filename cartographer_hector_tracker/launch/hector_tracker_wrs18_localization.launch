@@ -17,7 +17,12 @@
 -->
 
 <launch>
-  <arg name="load_state_filename"    default="" />
+  <arg name="scenario_name" default="$(optenv DEFAULT_SCENARIO_NAME wrs2018_scenario)" />
+
+  <!-- Find path -->
+  <arg name="dollar" value="$" /> 
+  <arg name="scenario_model_path" value="$(arg dollar)(find $(arg scenario_name)_model)" />
+  <arg name="load_state_filename"    default="$(arg scenario_model_path)/maps/cartographer_map.pbstream" />
 
   <node pkg="tf2_ros"
         type="static_transform_publisher"
