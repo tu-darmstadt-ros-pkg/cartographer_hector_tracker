@@ -23,11 +23,7 @@
   <arg name="dollar" value="$" /> 
   <arg name="scenario_model_path" value="$(arg dollar)(find $(arg scenario_name)_model)" />
   <arg name="load_state_filename"    default="$(arg scenario_model_path)/maps/cartographer_map.pbstream" />
-
-  <node pkg="tf2_ros"
-        type="static_transform_publisher"
-        name="link1_broadcasadasster"
-        args="0.57 1.15 0.5 3.175 0 0 world world_map" />
+  <include file="$(arg scenario_model_path)/launch/cartographer_map_transform.launch" />  
 
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
