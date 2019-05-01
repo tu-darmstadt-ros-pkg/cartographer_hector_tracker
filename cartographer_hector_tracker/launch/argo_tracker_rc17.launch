@@ -23,6 +23,7 @@
       output="screen" respawn="true">
     <remap from="points2" to="/spin_laser/vlp16"/> 
     <remap from="imu" to="/imu/data"/>
+    <remap from="odom" to="/odom_raw"/>
   </node>
 
 </launch>

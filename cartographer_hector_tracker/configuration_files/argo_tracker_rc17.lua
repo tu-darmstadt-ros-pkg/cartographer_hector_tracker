@@ -22,12 +22,12 @@ options = {
   map_frame = "world",
   tracking_frame = "base_link",
   published_frame = "odom",
-  -- published_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
+  matched_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
   odom_frame = "odom",
   provide_odom_frame = false,  
   publish_frame_projected_to_2d = false,  
   use_pose_extrapolator = true,
-  use_odometry = false,  
+  use_odometry = true,  
   use_nav_sat = false,
   use_landmarks = false,
   num_laser_scans = 0,  
@@ -57,9 +57,9 @@ MAP_BUILDER.use_trajectory_builder_3d = true
 MAP_BUILDER.num_background_threads = 3
 
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 240000
-POSE_GRAPH.constraint_builder.sampling_ratio = 1
-POSE_GRAPH.global_sampling_ratio = 1
-POSE_GRAPH.optimize_every_n_nodes = 24
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.0000000000001
+POSE_GRAPH.global_sampling_ratio = 0.00000000000001
+POSE_GRAPH.optimize_every_n_nodes = 24000000000000
 POSE_GRAPH.constraint_builder.min_score = 0.6
 POSE_GRAPH.log_residual_histograms = false
 
@@ -72,8 +72,9 @@ TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_we
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e5
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e5
+POSE_GRAPH.optimization_problem.fix_z_in_3d = false
 
 
 return options
