@@ -66,30 +66,34 @@ POSE_GRAPH.optimization_problem.log_solver_summary = false
 
 
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 8
-TRAJECTORY_BUILDER_3D.min_range = 0.3
+TRAJECTORY_BUILDER_3D.min_range = 0.6
 TRAJECTORY_BUILDER_3D.max_range = 40
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 200
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 100
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
-TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.1
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.1
+
+TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
 
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 5
 
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 400
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.05
-POSE_GRAPH.global_sampling_ratio = 1.0
-POSE_GRAPH.optimize_every_n_nodes = 400
-POSE_GRAPH.constraint_builder.min_score = 0.65
+
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 1E10
+POSE_GRAPH.constraint_builder.sampling_ratio = 1E-10
+POSE_GRAPH.global_sampling_ratio = 1E-10
+POSE_GRAPH.optimize_every_n_nodes = 1E10
+POSE_GRAPH.constraint_builder.min_score = 10
 POSE_GRAPH.log_residual_histograms = false
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 100.
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.hit_probability = 0.58
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.miss_probability = 0.48
+
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight = 10.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight = 30.
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight = 8e1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1e3
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e3
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e3
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 2 
 
 
