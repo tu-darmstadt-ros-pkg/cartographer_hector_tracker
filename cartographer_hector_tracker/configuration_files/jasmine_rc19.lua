@@ -66,9 +66,9 @@ POSE_GRAPH.optimization_problem.log_solver_summary = false
 
 
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 8
-TRAJECTORY_BUILDER_3D.min_range = 0.6
+TRAJECTORY_BUILDER_3D.min_range = 0.5
 TRAJECTORY_BUILDER_3D.max_range = 40
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 100
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 300
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
 
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
@@ -94,7 +94,7 @@ TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight = 1
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 2e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 1e2
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 1e2
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 2 
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.scans_per_optimization_update = 1 
 
 
 
