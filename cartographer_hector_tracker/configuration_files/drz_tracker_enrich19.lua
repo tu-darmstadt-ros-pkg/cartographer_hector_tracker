@@ -19,7 +19,7 @@ include "trajectory_builder.lua"
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
-  map_frame = "world",
+  map_frame = "world_cartographer",
   tracking_frame = "imu_link",
   published_frame = "odom",
   matched_pointcloud_frame = "spin_lidar_lidar_mount_link_fixed",
@@ -66,7 +66,7 @@ POSE_GRAPH.optimization_problem.log_solver_summary = false
 
 
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 8
-TRAJECTORY_BUILDER_3D.min_range = 0.4
+TRAJECTORY_BUILDER_3D.min_range = 1.0
 TRAJECTORY_BUILDER_3D.max_range = 80
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 300
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5
