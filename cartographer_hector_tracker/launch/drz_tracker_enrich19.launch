@@ -29,6 +29,6 @@
   <node pkg="tf"
         type="static_transform_publisher"
         name="world_cartographer_broadcaster"
-        args="0 0 -0.38 0 0 0 /world_cartographer /world 100" />
+        args="0 0 0.43 0 0 0 /world /world_cartographer 100" />
 
 </launch>
