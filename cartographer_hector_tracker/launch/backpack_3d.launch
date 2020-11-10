@@ -15,19 +15,19 @@
 -->
 
 <launch>
+  <param name="robot_description"
+    textfile="$(find cartographer_ros)/urdf/backpack_3d.urdf" />
 
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+    
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename drz_tracker_enrich19_retuned.lua"
+          -configuration_basename backpack_3d.lua"
       output="screen" respawn="true">
-    <remap from="points2" to="/spin_lidar/vlp16"/> 
-    <!-- /spin_lidar/vlp16 -->
-    <!-- /scan_cloud_filtered -->
-    <remap from="imu" to="/imu/xsens/data"/>
-    <!-- /imu/xsens/data -->
-    <!-- /imu/complementary_filter/data -->
-    <remap from="odom" to="/odom_raw"/>
+    <remap from="points2_1" to="horizontal_laser_3d" />
+    <remap from="points2_2" to="vertical_laser_3d" />
   </node>
 
 </launch>

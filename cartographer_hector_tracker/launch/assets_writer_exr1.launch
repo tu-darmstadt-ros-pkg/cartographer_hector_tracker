@@ -15,19 +15,13 @@
 -->
 
 <launch>
-
-  <node name="cartographer" pkg="cartographer_ros"
-      type="cartographer_node" args="
+  <node name="cartographer_assets_writer" pkg="cartographer_ros" required="true"
+      type="cartographer_assets_writer" args="
           -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename drz_tracker_enrich19_retuned.lua"
-      output="screen" respawn="true">
-    <remap from="points2" to="/spin_lidar/vlp16"/> 
-    <!-- /spin_lidar/vlp16 -->
-    <!-- /scan_cloud_filtered -->
-    <remap from="imu" to="/imu/xsens/data"/>
-    <!-- /imu/xsens/data -->
-    <!-- /imu/complementary_filter/data -->
-    <remap from="odom" to="/odom_raw"/>
+          -configuration_basename assets_writer_exr1.lua
+          -urdf_filename /home/daun/bag_files/exr1/exr_1_lidar.urdf
+          -bag_filenames /home/daun/bag_files/exr1/ahg_outdoor_loop/exr_data/processed/hallway_1500.bag
+          -pose_graph_filename /home/daun/bag_files/exr1/ahg_outdoor_loop/exr_data/processed/hallway_1500.bag.pbstream"
+      output="screen">
   </node>
-
 </launch>
