@@ -22,7 +22,7 @@ options = {
   map_frame = "world",
   tracking_frame = "imu_link",
   published_frame = "odom",
-  matched_pointcloud_frame = "imu_link",
+  matched_pointcloud_frame = "spin_lidar_mount_link_fixed",
   odom_frame = "odom",
   provide_odom_frame = false,
   publish_frame_projected_to_2d = false,
@@ -33,7 +33,6 @@ options = {
   num_laser_scans = 0,
   num_multi_echo_laser_scans = 0,
   num_subdivisions_per_laser_scan = 1,
-  handle_scan_as_structured_cloud = true,
   num_point_clouds = 1,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.1,
@@ -44,7 +43,7 @@ options = {
   fixed_frame_pose_sampling_ratio = 1.,
   imu_sampling_ratio = 1.,
   landmarks_sampling_ratio = 1.,
-  landmarks_sampling_ratio = 1.,
+  handle_scan_as_structured_cloud = true,
 }
 
 
@@ -77,7 +76,6 @@ TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.05
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.05
 
 MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 20
 
 
 TRAJECTORY_BUILDER_3D.submaps.num_range_data = 10000000000
@@ -118,7 +116,11 @@ TRAJECTORY_BUILDER_3D.submaps.grid_type = "TSDF"
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.ct_window_horizon =  0.6
 -- TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.ct_window_rate =  0.1
 
+
+--POSE_GRAPH.optimization_problem.acceleration_weight = 1e-10
+--POSE_GRAPH.optimization_problem.rotation_weight = 1e-10 --3e5
 POSE_GRAPH.optimization_problem.fix_z_in_3d = false
+
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0
 POSE_GRAPH.optimization_problem.use_online_imu_extrinsics_in_3d = false
 
@@ -129,26 +131,52 @@ TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.norma
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_radius = 2.0
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.velocity_weight  = 80
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.translation_weight  = 100
-TRAJECTORY_BUILDER_3D.min_range  = 1.25
-TRAJECTORY_BUILDER_3D.max_range  = 5
+TRAJECTORY_BUILDER_3D.min_range  = 0.25
+TRAJECTORY_BUILDER_3D.max_range  = 60
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight  = 8
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.calibrate_imu  = false
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.ct_window_horizon  = 0.5
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.project_sdf_distance_to_scan_normal  = true
 TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.relative_truncation_distance  = 2.5
--- TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_max_nn  = 30
--- TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_radius  = 2.0
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_max_nn  = 30
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_radius  = 2.0
 TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight  = 50.0
+TRAJECTORY_BUILDER_3D.min_range  = 1.0
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight  = 0.01
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight  = 0.01
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.project_sdf_distance_to_scan_normal  = true
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.relative_truncation_distance  = 2.5
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_max_nn  = 30
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_estimate_radius  = 2.0
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.low_resolution_grid_weight  = 50.0
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.initialization_duration  = 3.0
+TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_computation_method  = "CLOUD_STRUCTURE"
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.high_resolution_grid_weight  = 250
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight  = 8
+TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range  = 20.0
+TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.rotation_weight = 4
+TRAJECTORY_BUILDER_3D.max_range = 60
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.initialization_duration =  5.0
-TRAJECTORY_BUILDER_3D.submaps.range_data_inserter.tsdf_range_data_inserter.normal_computation_method = "CLOUD_STRUCTURE"
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 500
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.5
+POSE_GRAPH.global_sampling_ratio = 0.01
+POSE_GRAPH.optimize_every_n_nodes = 500
+POSE_GRAPH.constraint_builder.min_score = 0.6
+POSE_GRAPH.log_residual_histograms = false
+MAP_BUILDER.num_background_threads = 20
 
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.initialize_map_orientation_with_imu = true
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.calibrate_imu  = false
 
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 5000000
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.5
+POSE_GRAPH.global_sampling_ratio = 0.01
+POSE_GRAPH.optimize_every_n_nodes = 5000000
+POSE_GRAPH.constraint_builder.min_score = 0.6
+POSE_GRAPH.log_residual_histograms = false
+MAP_BUILDER.num_background_threads = 20
 
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_translation_weight = 0
-TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.odometry_rotation_weight = 0
+-- TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.sync_control_points_with_range_data = false
+-- TRAJECTORY_BUILDER_3D.optimizing_local_trajectory_builder.ct_window_rate =  0.4
+
 
 return options
